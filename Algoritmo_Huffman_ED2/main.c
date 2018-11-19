@@ -4,19 +4,28 @@
 
 int main()
 {
-    int b= 4, c;
-    char vetor[80];
+    int b= 4,i, c;
+    char *vetor;
     FILE *arquivo = fopen("arquivo.txt", "a+");
 
-    fread(vetor, sizeof(char), 80, arquivo);
 
+    vetor= (char*) malloc(sizeof(char));
 
+    while(vetor[i]!= EOF)
+    {
+        vetor[i]= fgetc(arquivo);
+        if(vetor[i]!= EOF)
+            vetor= (char*) realloc(vetor, (++i)* sizeof(char));
+        i++;
+    }
+
+    printf("%s", vetor);
 
 
 
         b=strlen(arquivo);
 
-    printf("%c", vetor[2]);
+    printf("%s", vetor);
 
     system("pause");
 }
