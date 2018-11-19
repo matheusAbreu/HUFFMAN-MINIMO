@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1542328067 source:c:\users\jakso\documents\trabalho ed2\algoritmo_huffman_ed2\main.c
+	<stdio.h>
+	<stdlib.h>
+
