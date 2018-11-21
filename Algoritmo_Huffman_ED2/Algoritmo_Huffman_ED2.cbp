@@ -31,7 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="TAD_arvore_binaria_aloc_enc.h" />
+		<Unit filename="TAD_arvore.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="TAD_arvore.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

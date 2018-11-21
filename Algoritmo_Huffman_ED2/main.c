@@ -1,24 +1,67 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 
+
+int menu();
 int main()
 {
-    int b= 4,i, c;
-    char *vetor;
-    FILE *arquivo = fopen("arquivo.txt", "r");
+    setlocale(LC_ALL, "portuguese");
+    int escolha,i;
+    char *texto, nome[30] ;
+    long tam_arquivo;
 
-    fseek( arquivo, 0L, SEEK_END );
-    long tam_arquivo = ftell(arquivo);// Devolve numero de bytes do arquivo
-    rewind(arquivo);//retorna pro inicio do arquivo
 
-    fflush(arquivo);//avaliar necessidade dessa parte
-    vetor= (char*) malloc((tam_arquivo) * sizeof(char));
-    i=fread(vetor, sizeof(char), tam, arquivo);  //retorna o numero de bytes lidos alem de registrar os dados no vetor
-    if(tam_arquivo!= i)  //CORREÇÃO DOS BYTES ADICIONAIS OCASIONADOS PELA QUEBRA DE LINHA
-        vetor= (char*)realloc( vetor, i * sizeof(char));
 
-    vetor[i] = '\0';//força a delimitação da string
+    escolha = menu();
+    printf("Digite o nome do arquivo desejado e sua extensão:\n");
+    fgets(nome, 30, stdin);
+    FILE *arquivo = fopen(nome, "r+");
+    switch(escolha)
+    {
+    case 1:
+
+
+        fseek( arquivo, 0L, SEEK_END );
+        tam_arquivo = ftell(arquivo);// Devolve numero de bytes do arquivo
+        rewind(arquivo);//retorna pro inicio do arquivo
+        fflush(arquivo);//avaliar necessidade dessa parte
+        texto= (char*) malloc((tam_arquivo) * sizeof(char));
+        i=fread(texto, sizeof(char), tam_arquivo, arquivo);  //retorna o numero de bytes lidos alem de registrar os dados no vetor
+
+        if(tam_arquivo!= i)  //CORREÇÃO DOS BYTES ADICIONAIS OCASIONADOS PELA QUEBRA DE LINHA
+            texto= (char*)realloc( texto, i * sizeof(char));
+
+        texto[i] = '\0';//força a delimitação da string
+        fclose(arquivo);
+
+
+
+  }
+
+
+
+
+
+
+
+
 
 
 }
+
+
+
+
+int menu()
+{
+    int valor;
+    printf("O ação deseja executar?\n\n");
+    printf("[1]- Compactar\n");
+    printf("[2]- Descompactar\n");
+    scanf("%i",&valor);
+    return(valor);
+
+}
+
