@@ -11,7 +11,7 @@ int main()
     int escolha,i;
     char *texto, nome[30] ;
     long tam_arquivo;
-
+    No_cego *tabela;
 
 
     escolha = menu();
@@ -35,6 +35,8 @@ int main()
 
         texto[i] = '\0';//força a delimitação da string
         fclose(arquivo);
+
+        tabela = analiseFrequencia( texto);
 
 
 

@@ -1,13 +1,22 @@
-typedef struct no
+typedef struct _no
 {
     char simbolo;
     int freq;
     typedef struct no   *proximo;
-}No
+}no
 
 typedef struct cego
 {
     int freq_total;
-    No  *esquerdo;
-    No  *direito;
+    no  *esquerdo;
+    no  *direito;
 }No_cego
+
+typedef struct _controle
+{
+    no *primeiro;
+    no *ultimo;
+}controle
+
+
+No_cego analiseFrequencia(char *palavras );
