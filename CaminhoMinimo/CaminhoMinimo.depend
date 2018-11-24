@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1543088864 source:/home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/CaminhoMinimo/grafo.c
+	<stdio.h>
+	<stdlib.h>
+	"grafo.h"
+
+1543088913 source:/home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/CaminhoMinimo/main.c
+	<stdio.h>
+	<stdlib.h>
+	"grafo.h"
+
+1543088869 /home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/CaminhoMinimo/grafo.h
+
+1543087322 /home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/CaminhoMinimo/grafo.c
+	<stdio.h>
+	<stdlib.h>
+
