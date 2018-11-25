@@ -20,6 +20,7 @@ void LimpaGrafo(grafo *x);//nao libera memoria, apenas altera o conteudo para nu
 void EscreveNo(no *x);
 no *CriaNo();
 grafo *CriaGrafo();
+grafo *CriandoGrafoAleatorio(int maxNo);//grafo alocando dentro da função
 void InserirNo(grafo *x);
 void RemoverNo(grafo *x, int posY);//Nao funciona
 void RemoverCaminho(grafo *x, int posY, int posZ);//Y é onde apagara, e Z é o no destino no qual deseja-se que se apague o caminho

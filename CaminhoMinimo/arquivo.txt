@@ -1,0 +1,7 @@
+Grafo:
+Index no Grafo: 00 - no:0A|:->|i:0C - p:51|->|i:0D - p:29|->|i:0E - p:62|->
+Index no Grafo: 01 - no:0B|:->|i:0A - p:67|->|i:0B - p:57|->|i:0E - p:45|->
+Index no Grafo: 02 - no:0C|:->|i:0C - p:91|->|i:0E - p:95|->
+Index no Grafo: 03 - no:0D|:->|i:0C - p:91|->|i:0E - p:10|->
+Index no Grafo: 04 - no:0E|:->|i:0A - p:08|->|i:0B - p:49|->|i:0C - p:49|->|i:0E - p:66|->
+

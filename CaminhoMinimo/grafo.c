@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "grafo.h"
 
 typedef struct _NO
@@ -32,6 +33,31 @@ void EscreveNo(no *x)
     /*tem que estruturar
      *leitura de arquivo pra depois bolar a escrita do nó cuzão*/
 
+}
+grafo *CriandoGrafoAleatorio(int maxNo)
+{
+    int i,j, randPeso, randExisCam;
+    grafo *x;
+
+    srand((unsigned)time(NULL));
+    x = CriaGrafo();
+
+    for(i=0; i< maxNo; i++)
+      InserirNo(x);
+
+     NomeandoNos(x);
+
+    for(i=0; i< maxNo; i++)
+        for(j=0; j< maxNo; j++)
+        {
+            randExisCam = rand()%2;
+            if(randExisCam == 1)
+            {
+                randPeso = (rand () % 98)+1;
+                InserirCaminho(x, i, j, randPeso);
+            }
+        }
+        return x;
 }
 no *CriaNo()
 {

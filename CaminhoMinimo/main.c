@@ -2,33 +2,25 @@
 #include <stdlib.h>
 #include <time.h>
 #include "grafo.h"
-#define MAXNO 15
+#include "dijkstra.h"
+#define MAXNO 5
 
 void main()
 {
-   grafo *x;
-   int i,j, randPeso, randExisCam;
+    grafo *x;
+    char *arq, nomeArq[] = "arquivo.txt";
 
-    srand((unsigned)time(NULL));
-    x = CriaGrafo();
+    FILE *arquivo = fopen("arquivo.txt", "r+");
 
-    for(i=0; i< MAXNO; i++)
-      InserirNo(x);
+    arq = PegandoConteudoDoArquivo(arquivo);
 
-     NomeandoNos(x);
+    x = CriandoGrafoAleatorio(MAXNO);
 
-    for(i=0; i< MAXNO; i++)
-        for(j=0; j< MAXNO; j++)
-        {
-            randExisCam = rand()%2;
-            if(randExisCam == 1)
-            {
-                randPeso = (rand () % 98)+1;
-                InserirCaminho(x, i, j, randPeso);
-            }
-        }
     ImprimindoMatrizDoGrafo(x);
 
+    free(arq);
+
+    fclose(arquivo);
 
     ApagarGrafo(x);
 
