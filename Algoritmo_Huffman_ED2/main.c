@@ -4,10 +4,10 @@
 #include <locale.h>
 
 #if linux
-#define LIMP __fpurge(stdin)
+#define LIMP __fpurge
 #endif
 #if WIN32
-#define LIMP fflush(stdin)
+#define LIMP fflush
 #endif
 
 int menu();
@@ -15,15 +15,17 @@ int main()
 {
     setlocale(LC_ALL, "portuguese");
     int escolha,i;
-    char *texto, nome[30] ;
+    char *texto, nome[30];
     long tam_arquivo;
     No_cego *tabela;
 
 
     escolha = menu();
-    printf("Digite o nome do arquivo desejado e sua extensão:\n");
+    printf("Digite o nome do arquivo desejado e sua extensao:\n");
+    LIMP(stdin);
     fgets(nome, 30, stdin);
     FILE *arquivo = fopen(nome, "r+");
+
     switch(escolha)
     {
         case 1:
