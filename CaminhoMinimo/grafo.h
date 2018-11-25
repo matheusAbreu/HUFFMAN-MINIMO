@@ -27,6 +27,6 @@ void InserirCaminhoDuplo(grafo *x, int posY, int posZ, int peso);//Insere o cami
 void InserirCaminho(grafo *x, int posY, int posZ, int peso);//Insere o caminho do nó, posY para posZ
 void ImprimindoNo(no *x);
 void ImprimindoMatrizDoGrafo(grafo *x);
-void NomeandoNo(no *x, int index);
+void NomeandoNos(grafo *x);
 
 #endif // GRAFO_H_INCLUDED

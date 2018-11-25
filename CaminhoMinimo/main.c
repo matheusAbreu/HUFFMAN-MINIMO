@@ -1,29 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "grafo.h";
-
+#define MAXNO 15
 
 void main()
 {
    grafo *x;
-   int i;
+   int i, randPos, randPeso, randExisCam;
 
-
+    srand((unsigned)time(NULL));
     x = CriaGrafo();
 
-    for(i=0; i< 25; i++)
-        InserirNo(x);
+    for(i=0; i< MAXNO; i++)
+      InserirNo(x);
 
-    InserirCaminho(x,0,1, 10);
-    InserirCaminho(x,0,2, 50);
-    InserirCaminho(x,0,3, 65);
-    InserirCaminho(x,1,2, 30);
-    InserirCaminho(x,1,4, 4);
-    InserirCaminho(x,2,3, 20);
-    InserirCaminho(x,2,4, 44);
-    InserirCaminho(x,3,1, 70);
-    InserirCaminho(x,3,4, 23);
-    InserirCaminho(x,4,0, 6);
+     NomeandoNos(x);
+
+    for(i=0; i< MAXNO; i++)
+    {
+        randExisCam = rand()%2;
+        if(randExisCam == 1)
+        {
+            randPos = rand() % MAXNO;
+            randPeso = rand () % 100;
+            InserirCaminho(x, i, randPos, randPeso);
+        }
+    }
     ImprimindoMatrizDoGrafo(x);
     //RemoverNo(x, 1);
     //RemoverCaminho(x, 1,2);

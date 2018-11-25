@@ -4,7 +4,7 @@
 
 typedef struct _NO
 {
-    char info;
+    char info[10];
     struct _NO **liga;
     int *peso, qntliga;
 }no;
@@ -16,7 +16,7 @@ typedef struct _GRAFO
 
 void LimpaNo(no *x)
 {
-    x->info = '\0';
+    x->info[0] = '\0';
     x->liga = NULL;
     x->peso = NULL;
     x->qntliga = 0;
@@ -176,19 +176,109 @@ void InserirCaminho(grafo *x, int posY, int posZ, int peso)
     else
         printf("\nUm dos nos nao foi encontrado\n");
 }
-void NomeandoNo(no *x, int index)
+void NomeandoNos(grafo *x)
 {
     /*
         Essa função nomea o no do grafo de acordo com o seu index
     */
+    int i;
+
+    for(i =0; i < x->qnt; i++)
+    {
+        //if((i/26)>0)
+            sprintf(x->conteudo[i]->info, "%i", (i/26));
+
+        switch( (i%26) )
+        {
+            case 0://a
+                strcat(x->conteudo[i]->info, "A");
+            break;
+            case 1://b
+                strcat(x->conteudo[i]->info, "B");
+            break;
+            case 2://c
+                strcat(x->conteudo[i]->info, "C");
+            break;
+            case 3://d
+                strcat(x->conteudo[i]->info, "D");
+            break;
+            case 4://e
+                strcat(x->conteudo[i]->info, "E");
+            break;
+            case 5://f
+                strcat(x->conteudo[i]->info, "F");
+            break;
+            case 6://g
+                strcat(x->conteudo[i]->info, "G");
+            break;
+            case 7://h
+                strcat(x->conteudo[i]->info, "H");
+            break;
+            case 8://i
+                strcat(x->conteudo[i]->info, "I");
+            break;
+            case 9://j
+                strcat(x->conteudo[i]->info, "J");
+            break;
+            case 10://k
+                strcat(x->conteudo[i]->info, "K");
+            break;
+            case 11://l
+                strcat(x->conteudo[i]->info, "L");
+            break;
+            case 12://m
+                strcat(x->conteudo[i]->info, "M");
+            break;
+            case 13://n
+                strcat(x->conteudo[i]->info, "N");
+            break;
+            case 14://o
+                strcat(x->conteudo[i]->info, "O");
+            break;
+            case 15://p
+                strcat(x->conteudo[i]->info, "P");
+            break;
+            case 16://q
+                strcat(x->conteudo[i]->info, "Q");
+            break;
+            case 17://r
+                strcat(x->conteudo[i]->info, "R");
+            break;
+            case 18://s
+                strcat(x->conteudo[i]->info, "S");
+            break;
+            case 19://t
+                strcat(x->conteudo[i]->info, "T");
+            break;
+            case 20://u
+                strcat(x->conteudo[i]->info, "U");
+            break;
+            case 21://v
+                strcat(x->conteudo[i]->info, "V");
+            break;
+            case 22://x
+                strcat(x->conteudo[i]->info, "X");
+            break;
+            case 23://w
+                strcat(x->conteudo[i]->info, "W");
+            break;
+            case 24://y
+                strcat(x->conteudo[i]->info, "Y");
+            break;
+            case 25://z
+                strcat(x->conteudo[i]->info, "Z");
+            break;
+        }
+    }
 }
 void ImprimindoNo(no *x)
 {
     int i;
-    printf("|no:%c|:", x->info);
+
+    printf("no:%s|:", x->info);
     if(x->peso != NULL)
         for(i =0; i< x->qntliga; i++)
-            printf("->|i:%c|p:%d|", x->liga[i]->info, x->peso[i]);
+            printf(((x->peso[i]<10)?("->|i:%s - p:0%d|"):("->|i:%s - p:%d|")), x->liga[i]->info, x->peso[i]);
 
     printf("->");
 }
@@ -198,7 +288,7 @@ void ImprimindoMatrizDoGrafo(grafo *x)
     printf("\nGrafo:");
     for(i =0; i < x->qnt;i++)
     {
-        printf("\n%d:", i);
+        printf(((i<10)?("\nIndex no Grafo: 0%d - "):("\nIndex no Grafo: %d - ")), i);
         ImprimindoNo((x->conteudo[i]));
     }
 }
