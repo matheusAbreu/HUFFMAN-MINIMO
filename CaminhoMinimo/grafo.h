@@ -1,7 +1,8 @@
 #ifndef GRAFO_H_INCLUDED
 #define GRAFO_H_INCLUDED
 
-/* Desta forma, declando a estrutura em seu respectivo codigo e
+/*
+    Desta forma, declando a estrutura em seu respectivo codigo e
     passando a assinatura da estrutura no header, é impossivel
     acessar as variaveis das estruturas no main. Sendo desta forma
     somos obrigados a usar as funções estipuladas aqui.

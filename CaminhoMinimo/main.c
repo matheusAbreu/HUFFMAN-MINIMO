@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "grafo.h";
+#include "grafo.h"
 #define MAXNO 15
 
 void main()
 {
    grafo *x;
-   int i,j, randPos, randPeso, randExisCam;
+   int i,j, randPeso, randExisCam;
 
     srand((unsigned)time(NULL));
     x = CriaGrafo();
@@ -23,15 +23,13 @@ void main()
             randExisCam = rand()%2;
             if(randExisCam == 1)
             {
-                //randPos = rand() % MAXNO;
-                randPeso = (rand () % 100)+1;
+                randPeso = (rand () % 98)+1;
                 InserirCaminho(x, i, j, randPeso);
             }
         }
     ImprimindoMatrizDoGrafo(x);
-    //RemoverNo(x, 1);
-    //RemoverCaminho(x, 1,2);
-    //ImprimindoMatrizDoGrafo(x);
+
+
     ApagarGrafo(x);
 
 }

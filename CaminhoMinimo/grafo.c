@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "grafo.h";
+#include "grafo.h"
 
 typedef struct _NO
 {
@@ -134,7 +134,7 @@ void RemoverCaminho(grafo *x, int posY, int posZ)
 }
 void ApagarGrafo(grafo *x)
 {
-    int i,j;
+    int i;
     for(i =0; i < x->qnt; i++)
     {
         free((x->conteudo[i]->peso));
