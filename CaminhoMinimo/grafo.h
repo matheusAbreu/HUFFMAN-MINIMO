@@ -28,5 +28,6 @@ void InserirCaminho(grafo *x, int posY, int posZ, int peso);//Insere o caminho d
 void ImprimindoNo(no *x);
 void ImprimindoMatrizDoGrafo(grafo *x);
 void NomeandoNos(grafo *x);
+int QntPesaLigacao(grafo *x, int posY, int posZ);//Essa funçao testa a ligação de y para z. Returna zero caso não encontre a ligação
 
 #endif // GRAFO_H_INCLUDED

@@ -148,33 +148,56 @@ void InserirCaminhoDuplo(grafo *x, int posY, int posZ, int peso)
 {
     if(posY < x->qnt && posZ < x->qnt)
     {
-        x->conteudo[posY]->liga = (no**) realloc(x->conteudo[posY]->liga, (x->conteudo[posY]->qntliga+1)*sizeof(no*));
-        x->conteudo[posY]->peso = (int*) realloc(x->conteudo[posY]->peso,(x->conteudo[posY]->qntliga+1)*sizeof(int));
-        x->conteudo[posY]->liga[x->conteudo[posY]->qntliga] = x->conteudo[posZ];
-        x->conteudo[posY]->peso[x->conteudo[posY]->qntliga] = peso;
-        x->conteudo[posY]->qntliga++;
+        if(QntPesaLigacao(x, posY, posZ) <= 1)
+        {
+            x->conteudo[posY]->liga = (no**) realloc(x->conteudo[posY]->liga, (x->conteudo[posY]->qntliga+1)*sizeof(no*));
+            x->conteudo[posY]->peso = (int*) realloc(x->conteudo[posY]->peso,(x->conteudo[posY]->qntliga+1)*sizeof(int));
+            x->conteudo[posY]->liga[x->conteudo[posY]->qntliga] = x->conteudo[posZ];
+            x->conteudo[posY]->peso[x->conteudo[posY]->qntliga] = peso;
+            x->conteudo[posY]->qntliga++;
+        }else
+                printf("\nJá ligação já existe uma ligacao de %d para %d\n", posY, posZ);
 
-        x->conteudo[posZ]->liga = (no**) realloc(x->conteudo[posZ]->liga,(x->conteudo[posZ]->qntliga+1)*sizeof(no*));
-        x->conteudo[posZ]->peso = (int*) realloc(x->conteudo[posZ]->peso,(x->conteudo[posZ]->qntliga+1)*sizeof(int));
-        x->conteudo[posZ]->liga[x->conteudo[posZ]->qntliga] = x->conteudo[posY];
-        x->conteudo[posZ]->peso[x->conteudo[posZ]->qntliga] = peso;
-        x->conteudo[posZ]->qntliga++;
+        if(QntPesaLigacao(x, posZ, posY) <= 1)
+        {
+            x->conteudo[posZ]->liga = (no**) realloc(x->conteudo[posZ]->liga,(x->conteudo[posZ]->qntliga+1)*sizeof(no*));
+            x->conteudo[posZ]->peso = (int*) realloc(x->conteudo[posZ]->peso,(x->conteudo[posZ]->qntliga+1)*sizeof(int));
+            x->conteudo[posZ]->liga[x->conteudo[posZ]->qntliga] = x->conteudo[posY];
+            x->conteudo[posZ]->peso[x->conteudo[posZ]->qntliga] = peso;
+            x->conteudo[posZ]->qntliga++;
+        }else
+                printf("\nJá ligação já existe uma ligacao de %d para %d\n", posZ, posY);
     }
     else
         printf("\nUm dos nos nao foi encontrado\n");
 }
 void InserirCaminho(grafo *x, int posY, int posZ, int peso)
 {
-    if(posY < x->qnt && posZ < x->qnt)
+    if(QntPesaLigacao(x, posY, posZ) <= 1)
+       {
+            if(posY < x->qnt && posZ < x->qnt)
+            {
+                x->conteudo[posY]->liga = (no**) realloc(x->conteudo[posY]->liga, (x->conteudo[posY]->qntliga+1)*sizeof(no*));
+                x->conteudo[posY]->peso = (int*) realloc(x->conteudo[posY]->peso,(x->conteudo[posY]->qntliga+1)*sizeof(int));
+                x->conteudo[posY]->liga[x->conteudo[posY]->qntliga] = x->conteudo[posZ];
+                x->conteudo[posY]->peso[x->conteudo[posY]->qntliga] = peso;
+                x->conteudo[posY]->qntliga++;
+            }
+            else
+                printf("\nUm dos nos nao foi encontrado\n");
+        }
+        else
+                printf("\nA ligação já existe\n");
+}
+int QntPesaLigacao(grafo *x, int posY, int posZ)
+{
+    int i;
+    for(i = 0; i < x->conteudo[posY]->qntliga; i++)
     {
-        x->conteudo[posY]->liga = (no**) realloc(x->conteudo[posY]->liga, (x->conteudo[posY]->qntliga+1)*sizeof(no*));
-        x->conteudo[posY]->peso = (int*) realloc(x->conteudo[posY]->peso,(x->conteudo[posY]->qntliga+1)*sizeof(int));
-        x->conteudo[posY]->liga[x->conteudo[posY]->qntliga] = x->conteudo[posZ];
-        x->conteudo[posY]->peso[x->conteudo[posY]->qntliga] = peso;
-        x->conteudo[posY]->qntliga++;
+        if(x->conteudo[posY]->liga[i]->info == x->conteudo[posZ]->info)
+            return (x->conteudo[posY]->peso[i]);
     }
-    else
-        printf("\nUm dos nos nao foi encontrado\n");
+    return 0;
 }
 void NomeandoNos(grafo *x)
 {

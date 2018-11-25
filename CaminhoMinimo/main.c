@@ -7,7 +7,7 @@
 void main()
 {
    grafo *x;
-   int i, randPos, randPeso, randExisCam;
+   int i,j, randPos, randPeso, randExisCam;
 
     srand((unsigned)time(NULL));
     x = CriaGrafo();
@@ -18,15 +18,16 @@ void main()
      NomeandoNos(x);
 
     for(i=0; i< MAXNO; i++)
-    {
-        randExisCam = rand()%2;
-        if(randExisCam == 1)
+        for(j=0; j< MAXNO; j++)
         {
-            randPos = rand() % MAXNO;
-            randPeso = rand () % 100;
-            InserirCaminho(x, i, randPos, randPeso);
+            randExisCam = rand()%2;
+            if(randExisCam == 1)
+            {
+                //randPos = rand() % MAXNO;
+                randPeso = (rand () % 100)+1;
+                InserirCaminho(x, i, j, randPeso);
+            }
         }
-    }
     ImprimindoMatrizDoGrafo(x);
     //RemoverNo(x, 1);
     //RemoverCaminho(x, 1,2);
