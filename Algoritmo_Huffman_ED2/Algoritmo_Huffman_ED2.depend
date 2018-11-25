@@ -3,10 +3,24 @@
 	<stdio.h>
 	<stdlib.h>
 
+1542832003 
+
 1542832003 source:c:\users\jakso\documents\trabalho ed2\huffman-minimo\algoritmo_huffman_ed2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
 1542833111 source:c:\users\jakso\documents\trabalho ed2\huffman-minimo\algoritmo_huffman_ed2\tad_arvore.c
+
+1543157971 source:/home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/Algoritmo_Huffman_ED2/TAD_arvore.c
+	<string.h>
+	"TAD_arvore.h"
+
+1543152055 /home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/Algoritmo_Huffman_ED2/TAD_arvore.h
+
+1543160036 source:/home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/Algoritmo_Huffman_ED2/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
 

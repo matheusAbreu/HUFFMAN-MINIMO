@@ -11,53 +11,45 @@
 #endif
 
 int menu();
-int main()
+void main()
 {
     setlocale(LC_ALL, "portuguese");
     int escolha,i;
-    char *texto, nome[30];
+    char *texto, nome[] = "";
     long tam_arquivo;
-    No_cego *tabela;
+   // No_cego *tabela;
 
 
     escolha = menu();
     printf("Digite o nome do arquivo desejado e sua extensao:\n");
     LIMP(stdin);
-    fgets(nome, 30, stdin);
-    FILE *arquivo = fopen(nome, "r+");
+    //fgets(nome, 30, stdin);
+    FILE *arquivo = fopen("arquivo.txt", "r+");
 
     switch(escolha)
     {
         case 1:
 
-            fseek( arquivo, 0L, SEEK_END );
+            fseek( arquivo, 0L, SEEK_END);
             tam_arquivo = ftell(arquivo);// Devolve numero de bytes do arquivo
             rewind(arquivo);//retorna pro inicio do arquivo
             LIMP(arquivo);//avaliar necessidade dessa parte
             texto= (char*) malloc((tam_arquivo) * sizeof(char));
-            i=fread(texto, sizeof(char), tam_arquivo, arquivo);  //retorna o numero de bytes lidos alem de registrar os dados no vetor
+            i = fread(texto, sizeof(char), tam_arquivo, arquivo);  //retorna o numero de bytes lidos alem de registrar os dados no vetor
 
-            if(tam_arquivo!= i)  //CORREÇÃO DOS BYTES ADICIONAIS OCASIONADOS PELA QUEBRA DE LINHA
+            if(tam_arquivo != i)  //CORREÇÃO DOS BYTES ADICIONAIS OCASIONADOS PELA QUEBRA DE LINHA
                 texto= (char*)realloc( texto, i * sizeof(char));
 
-            texto[i] = '\0';//força a delimitação da string
+            //texto[i] = '\0';//força a delimitação da string
+            printf("\n%s\n", texto);
             fclose(arquivo);
 
-            tabela = analiseFrequencia( texto);
+            //tabela = analiseFrequencia( texto);
         break;
 
 
 
     }
-
-
-
-
-
-
-
-
-
 
 }
 
