@@ -3,6 +3,12 @@
 #include <string.h>
 #include <locale.h>
 
+#if linux
+#define LIMP __fpurge(stdin)
+#endif
+#if WIN32
+#define LIMP fflush(stdin)
+#endif
 
 int menu();
 int main()
@@ -20,27 +26,27 @@ int main()
     FILE *arquivo = fopen(nome, "r+");
     switch(escolha)
     {
-    case 1:
+        case 1:
+
+            fseek( arquivo, 0L, SEEK_END );
+            tam_arquivo = ftell(arquivo);// Devolve numero de bytes do arquivo
+            rewind(arquivo);//retorna pro inicio do arquivo
+            LIMP(arquivo);//avaliar necessidade dessa parte
+            texto= (char*) malloc((tam_arquivo) * sizeof(char));
+            i=fread(texto, sizeof(char), tam_arquivo, arquivo);  //retorna o numero de bytes lidos alem de registrar os dados no vetor
+
+            if(tam_arquivo!= i)  //CORREÇÃO DOS BYTES ADICIONAIS OCASIONADOS PELA QUEBRA DE LINHA
+                texto= (char*)realloc( texto, i * sizeof(char));
+
+            texto[i] = '\0';//força a delimitação da string
+            fclose(arquivo);
+
+            tabela = analiseFrequencia( texto);
+        break;
 
 
-        fseek( arquivo, 0L, SEEK_END );
-        tam_arquivo = ftell(arquivo);// Devolve numero de bytes do arquivo
-        rewind(arquivo);//retorna pro inicio do arquivo
-        fflush(arquivo);//avaliar necessidade dessa parte
-        texto= (char*) malloc((tam_arquivo) * sizeof(char));
-        i=fread(texto, sizeof(char), tam_arquivo, arquivo);  //retorna o numero de bytes lidos alem de registrar os dados no vetor
 
-        if(tam_arquivo!= i)  //CORREÇÃO DOS BYTES ADICIONAIS OCASIONADOS PELA QUEBRA DE LINHA
-            texto= (char*)realloc( texto, i * sizeof(char));
-
-        texto[i] = '\0';//força a delimitação da string
-        fclose(arquivo);
-
-        tabela = analiseFrequencia( texto);
-
-
-
-  }
+    }
 
 
 

@@ -1,5 +1,6 @@
 #include <string.h>
-#include 'TAD_arvore.h'
+#include "TAD_arvore.h"
+
 No_cego analiseFrequencia(char *palavras )
 {
     char *copia, verif;
