@@ -10,17 +10,17 @@ void main()
     grafo *x;
     char *arq, nomeArq[] = "arquivo.txt";
 
-    FILE *arquivo = fopen("arquivo.txt", "r+");
+    FILE *arquivo = fopen(nomeArq, "r+");//Abrindo o arquivo para leitura
 
     arq = PegandoConteudoDoArquivo(arquivo);
 
-    x = CriandoGrafoAleatorio(MAXNO);
+    x = escrevendoMeuTexto(MAXNO);
 
     ImprimindoMatrizDoGrafo(x);
 
     free(arq);
 
-    fclose(arquivo);
+    fclose(arquivo);//Fechando Arquivo
 
     ApagarGrafo(x);
 

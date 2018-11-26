@@ -5,7 +5,7 @@
 	<time.h>
 	"grafo.h"
 
-1543168923 source:/home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/CaminhoMinimo/main.c
+1543267410 source:/home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/CaminhoMinimo/main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -18,7 +18,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1543168762 source:/home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/CaminhoMinimo/dijkstra.c
+1543266115 source:/home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/CaminhoMinimo/dijkstra.c
 	"dijkstra.h"
 
 1543168205 /home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/CaminhoMinimo/dijkstra.h
