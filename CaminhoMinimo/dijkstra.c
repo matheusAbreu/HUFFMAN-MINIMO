@@ -106,7 +106,40 @@ void imprimindoMeuTexto(MeuTexto *x)
             printf((i==(x->qntEsp-1))?(" %d.\n\n"):(" %d,"),x->posEsp[i]);
     }
 }
+void AnalisandoLigacaoNoTexto(grafo *x, MeuTexto *texto)
+{
+    //Analisa e aloca
+    const int valorDoPrimIndex = 34, DistProPeso = 7, DistProProxIndex = 15;
+    int i, j, k, indexLig, valorPeso;
+    char c, temp[5];
+    MeuTexto *valorIndexNo, *valorPesoLig;
+    valorIndexNo = criandoMeuTexto();
+    valorPesoLig = criandoMeuTexto();
+    for(i = 0; i < texto->qntEsp; i++)
+    {
+            j = (texto->posEsp[i] + valorDoPrimIndex );//Armazenando o valor do index do index do nó
 
+            for(k = j; k < texto->posEsp[i+1]; k += DistProProxIndex )
+            {
+                c =texto->vetor[k];
+                ImprimindoMatrizDoGrafo(x);
+                if(verificandoCaracterNumero(c))
+                {
+                    copiandoMeuTexto(valorIndexNo, texto, k, (k+2));
+                    indexLig = IdentificarIndexNo(x, texto->vetor);
+                    copiandoMeuTexto(valorPesoLig, texto, (k+DistProPeso), ((k+DistProPeso)+2));
+                    valorPeso = atoi(valorPesoLig->vetor);
+                    InserirCaminho(x, i, indexLig,valorPeso );
+
+                }
+                else
+                    break;
+            }
+
+    }
+    limpandoMeuTexto(valorIndexNo);
+    limpandoMeuTexto(valorPesoLig);
+}
 grafo *ReconhendoGrafoDoTexto(MeuTexto *texto)
 {
     grafo *x;
@@ -122,22 +155,20 @@ grafo *ReconhendoGrafoDoTexto(MeuTexto *texto)
             j = (texto->posEsp[i] + 17);//Armazenando o valor do index do index do nó
             c =texto->vetor[j];//Pegando o caracter referente ao primeiro numero do index
             if(verificandoCaracterNumero(c))
-            {
                 InserirNo(x);
-            }
-
-
         }
         NomeandoNos(x);
+        AnalisandoLigacaoNoTexto(x, texto);
 
     }
     return x;
 }
 void copiandoMeuTexto(MeuTexto *dest, MeuTexto *ori, int ini, int fim)
 {
-    int i;
-
+        int i;
+        if(dest != NULL)
         limpandoMeuTexto(dest);
+
         dest->vetor = (char*)malloc(((fim-ini)+1)*sizeof(char));
         if(dest->vetor != NULL)
         {

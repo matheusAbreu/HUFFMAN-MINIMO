@@ -196,6 +196,17 @@ void InserirCaminhoDuplo(grafo *x, int posY, int posZ, int peso)
     else
         printf("\nUm dos nos nao foi encontrado\n");
 }
+int IdentificarIndexNo(grafo *x, char *infoNo)
+{
+    int i;
+    char c[5];
+    strcpy(c, infoNo);
+    /*for(i = 0; i < x->qnt; i++)
+        if(strcmp(x->conteudo[i]->info, infoNo) == 0)
+            break;
+
+    return i;*/
+}
 void InserirCaminho(grafo *x, int posY, int posZ, int peso)
 {
     if(QntPesaLigacao(x, posY, posZ) <= 1)

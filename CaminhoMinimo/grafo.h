@@ -31,5 +31,6 @@ void ImprimindoNo(no *x);
 void ImprimindoMatrizDoGrafo(grafo *x);
 void NomeandoNos(grafo *x);
 int QntPesaLigacao(grafo *x, int posY, int posZ);//Essa funçao testa a ligação de y para z. Returna zero caso não encontre a ligação
+int IdentificarIndexNo(grafo *x, char *infoNo);
 
 #endif // GRAFO_H_INCLUDED
