@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
-
+#include "Fila.h"
 #if linux
 #define LIMP __fpurge
 #endif
@@ -15,16 +15,16 @@ void main()
 {
     setlocale(LC_ALL, "portuguese");
     int escolha,i;
-    char *texto, nome[] = "";
+    char *texto, nome[30];
     long tam_arquivo;
-   // No_cego *tabela;
+    Fila *tabela;
 
 
     escolha = menu();
     printf("Digite o nome do arquivo desejado e sua extensao:\n");
     LIMP(stdin);
-    //fgets(nome, 30, stdin);
-    FILE *arquivo = fopen("arquivo.txt", "r+");
+    scanf("%s", nome);
+    FILE *arquivo = fopen(nome, "r+");
 
     switch(escolha)
     {
@@ -40,11 +40,14 @@ void main()
             if(tam_arquivo != i)  //CORREÇÃO DOS BYTES ADICIONAIS OCASIONADOS PELA QUEBRA DE LINHA
                 texto= (char*)realloc( texto, i * sizeof(char));
 
-            //texto[i] = '\0';//força a delimitação da string
-            printf("\n%s\n", texto);
+            texto[i] = '\0';//força a delimitação da string
             fclose(arquivo);
 
-            //tabela = analiseFrequencia( texto);
+            tabela = fila_cria();
+
+
+            system("pause");
+
         break;
 
 
