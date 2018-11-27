@@ -1,22 +1,13 @@
-typedef struct _no
-{
-    char simbolo;
-    int freq;
-    struct no *proximo;
-}no;
+#include "Fila.h"
 
 typedef struct cego
 {
     int freq_total;
-    no  *esquerdo;
-    no  *direito;
+    Elemento  *esquerdo;
+    Elemento  *direito;
 }No_cego;
 
-typedef struct _controle
-{
-    no *primeiro;
-    no *ultimo;
-}controle;
 
 
-No_cego analiseFrequencia(char *palavras );
+
+Fila* analiseFrequencia(char *palavras );

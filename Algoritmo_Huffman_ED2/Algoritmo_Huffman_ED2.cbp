@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Fila.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Fila.h" />
 		<Unit filename="TAD_arvore.c">
 			<Option compilerVar="CC" />
 		</Unit>

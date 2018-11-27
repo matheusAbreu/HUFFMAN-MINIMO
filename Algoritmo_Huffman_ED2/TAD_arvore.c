@@ -1,11 +1,12 @@
 #include <string.h>
 #include "TAD_arvore.h"
 
-/*No_cego *analiseFrequencia(char *palavras )/*Se vc vai atribuir a um ponteira a função tem que ser um ponteiro e retornar um ponteiro
+
+Fila* analiseFrequencia(char *palavras )
 {
     char *copia, verif;
     int i,a,j;
-    controle *fila = malloc (sizeof(controle));
+    Fila *controle = malloc (sizeof(controle));
 
     a = strlen(palavras);
     copia= (char*) malloc (a * sizeof(char));
@@ -21,4 +22,5 @@
        }
     }
 
-}*/
+}
+
