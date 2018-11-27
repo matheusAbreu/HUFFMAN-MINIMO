@@ -94,7 +94,6 @@ void InserirNo(grafo *x)
     no *novo;
     novo = CriaNo();
     LimpaNo(novo);
-    //EscreveNo(novo);
 
     if(x->conteudo == NULL)
     {

@@ -44,7 +44,7 @@ void identificandoQuebraLinha(MeuTexto *x)
 }
 MeuTexto *escrevendoMeuTexto(FILE *arq)
 {
-    int tam,i;
+    int tam;
     MeuTexto *x;
     x = criandoMeuTexto();
 
@@ -55,21 +55,27 @@ MeuTexto *escrevendoMeuTexto(FILE *arq)
     tam = strlen(x->vetor);
     if(tam > 2)
     {
-        limpandoMeuTexto(x);
-        x->vetor = (char*)malloc((tam+1)*sizeof(char));
-
         if(x->vetor != NULL)
         {
             x->tam = tam;
             identificandoQuebraLinha(x);
+            return x;
         }
         else
             printf("\nHouve um erro na alocacao - Funcao:escrevendoMeuTexto\n");
     }
     else
             printf("\nHouve um erro na alocacao - Funcao:escrevendoMeuTexto\n");
-}
 
+    return NULL;
+}
+void limpandoMeuTexto(MeuTexto *x)
+{
+    free(x->posEsp);
+    free(x->vetor);
+    x->tam =0;
+    x->qntEsp = 0;
+}
 char *PegandoConteudoDoArquivo(FILE *arq)
 {
     char *texto;
@@ -84,7 +90,6 @@ char *PegandoConteudoDoArquivo(FILE *arq)
 
     if(tam_arquivo != i)  //CORREÇÃO DOS BYTES ADICIONAIS OCASIONADOS PELA QUEBRA DE LINHA
         texto= (char*)realloc( texto, i * sizeof(char));
-
 
     //printf("\n%s\n", texto);
 
@@ -101,8 +106,64 @@ void imprimindoMeuTexto(MeuTexto *x)
             printf((i==(x->qntEsp-1))?(" %d.\n\n"):(" %d,"),x->posEsp[i]);
     }
 }
-grafo *ReconhendoGrafoDoTexto(char *texto)
+
+grafo *ReconhendoGrafoDoTexto(MeuTexto *texto)
 {
+    grafo *x;
+    int index = 0, i, j;
+    char c;
+    if(texto->vetor != NULL)
+    {
+        x = CriaGrafo();
+        for(i = 0; i < texto->qntEsp; i++)
+        {
+            /* eu já desconsidero o index zero pois
+            sei que a primeira quebra é despressivel*/
+            j = (texto->posEsp[i] + 17);//Armazenando o valor do index do index do nó
+            c =texto->vetor[j];//Pegando o caracter referente ao primeiro numero do index
+            if(verificandoCaracterNumero(c))
+            {
+                InserirNo(x);
+            }
+
+
+        }
+        NomeandoNos(x);
+
+    }
+    return x;
+}
+void copiandoMeuTexto(MeuTexto *dest, MeuTexto *ori, int ini, int fim)
+{
+    int i;
+
+        limpandoMeuTexto(dest);
+        dest->vetor = (char*)malloc(((fim-ini)+1)*sizeof(char));
+        if(dest->vetor != NULL)
+        {
+            dest->tam = (fim-ini);
+            for(i =ini; i<fim;i++)
+                dest->vetor[i-ini] = ori->vetor[i];
+
+            identificandoQuebraLinha(dest);
+        }
+        else
+            printf("\nHouve um erro na alocacao - Funcao:escrevendoMeuTexto\n");
 
 }
+int verificandoCaracterNumero(char c)
+{
+    /*Retorna 1 se o caracter for um numero
+      Retorna 0 caso não seja*/
+    if((c == '0' || c == '1' || c == '2' ||
+        c == '5' || c == '4' || c == '3' ||
+        c == '6' || c == '7' || c == '8' ||
+        c == '9' ))
+    {
+        return 1;
+    }
+    else
+        return 0;
+}
+
 

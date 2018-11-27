@@ -22,6 +22,8 @@ MeuTexto *criandoMeuTexto();
 void identificandoQuebraLinha(MeuTexto *x);
 MeuTexto *escrevendoMeuTexto(FILE *arq);
 void imprimindoMeuTexto(MeuTexto *x);
-
+void limpandoMeuTexto(MeuTexto *x);//Libera o conteudo malocado
+void copiandoMeuTexto(MeuTexto *dest, MeuTexto *ori, int ini, int fim);//Copia trecho do texto original para o texto destino
+int verificandoCaracterNumero(char c);
 
 #endif // DIJKSTRA_H_INCLUDED

@@ -8,17 +8,23 @@
 void main()
 {
     grafo *x;
-    char *arq, nomeArq[] = "arquivo.txt";
+    MeuTexto *textArq;
+    char nomeArq[] = "arquivo.txt";
 
     FILE *arquivo = fopen(nomeArq, "r+");//Abrindo o arquivo para leitura
 
-    arq = PegandoConteudoDoArquivo(arquivo);
+    textArq = escrevendoMeuTexto(arquivo);
+    x = ReconhendoGrafoDoTexto(textArq);
 
-    x = escrevendoMeuTexto(MAXNO);
+    //x = CriandoGrafoAleatorio(MAXNO);
 
+    printf("\nGrafo Lido\n");
     ImprimindoMatrizDoGrafo(x);
+    printf("\n\n\n\n\n\nGrafo do Arquivo\n");
+    imprimindoMeuTexto(textArq);
 
-    free(arq);
+    ApagarGrafo(x);
+    limpandoMeuTexto(textArq);
 
     fclose(arquivo);//Fechando Arquivo
 
