@@ -111,7 +111,7 @@ void AnalisandoLigacaoNoTexto(grafo *x, MeuTexto *texto)
     //Analisa e aloca
     const int valorDoPrimIndex = 34, DistProPeso = 7, DistProProxIndex = 15;
     int i, j, k, indexLig, valorPeso;
-    char c, temp[5];
+    char c, temp[15];
     MeuTexto *valorIndexNo, *valorPesoLig;
     valorIndexNo = criandoMeuTexto();
     valorPesoLig = criandoMeuTexto();
@@ -126,6 +126,7 @@ void AnalisandoLigacaoNoTexto(grafo *x, MeuTexto *texto)
                 if(verificandoCaracterNumero(c))
                 {
                     copiandoMeuTexto(valorIndexNo, texto, k, (k+2));
+                    strcpy(temp,valorIndexNo->vetor);
                     indexLig = IdentificarIndexNo(x, texto->vetor);
                     copiandoMeuTexto(valorPesoLig, texto, (k+DistProPeso), ((k+DistProPeso)+2));
                     valorPeso = atoi(valorPesoLig->vetor);
@@ -165,17 +166,21 @@ grafo *ReconhendoGrafoDoTexto(MeuTexto *texto)
 }
 void copiandoMeuTexto(MeuTexto *dest, MeuTexto *ori, int ini, int fim)
 {
-        int i;
+        int i, k = ((fim-ini)+1);
         if(dest != NULL)
         limpandoMeuTexto(dest);
+        char temp[15];
 
-        dest->vetor = (char*)malloc(((fim-ini)+1)*sizeof(char));
+        dest->vetor = (char*)malloc(k*sizeof(char));
         if(dest->vetor != NULL)
         {
             dest->tam = (fim-ini);
             for(i =ini; i<fim;i++)
                 dest->vetor[i-ini] = ori->vetor[i];
 
+
+            dest->vetor[k] = '\0';
+            strcpy(temp, dest->vetor);
             identificandoQuebraLinha(dest);
         }
         else

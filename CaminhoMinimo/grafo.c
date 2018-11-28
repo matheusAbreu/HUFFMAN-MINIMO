@@ -199,13 +199,11 @@ void InserirCaminhoDuplo(grafo *x, int posY, int posZ, int peso)
 int IdentificarIndexNo(grafo *x, char *infoNo)
 {
     int i;
-    char c[5];
-    strcpy(c, infoNo);
-    /*for(i = 0; i < x->qnt; i++)
+    for(i = 0; i < x->qnt; i++)
         if(strcmp(x->conteudo[i]->info, infoNo) == 0)
-            break;
+            return i;
 
-    return i;*/
+    return -1;
 }
 void InserirCaminho(grafo *x, int posY, int posZ, int peso)
 {

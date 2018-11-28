@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1543287938 source:/home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/CaminhoMinimo/grafo.c
+1543289722 source:/home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/CaminhoMinimo/grafo.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -18,7 +18,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1543287229 source:/home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/CaminhoMinimo/dijkstra.c
+1543292562 source:/home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/CaminhoMinimo/dijkstra.c
 	"dijkstra.h"
 
 1543277563 /home/abreu/Área de trabalho/Huffman-Minimo/Huffman-Minimo/CaminhoMinimo/dijkstra.h
