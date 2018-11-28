@@ -5,14 +5,15 @@
 
 1542832003 
 
-1543281361 source:c:\users\jakso\documents\trabalho ed2\huffman-minimo\algoritmo_huffman_ed2\main.c
+1543298853 source:c:\users\jakso\documents\trabalho ed2\huffman-minimo\algoritmo_huffman_ed2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<locale.h>
 	"Fila.h"
 
-1543280158 source:c:\users\jakso\documents\trabalho ed2\huffman-minimo\algoritmo_huffman_ed2\tad_arvore.c
+1543298575 source:c:\users\jakso\documents\trabalho ed2\huffman-minimo\algoritmo_huffman_ed2\tad_arvore.c
+	<string.h>
 	<string.h>
 	"TAD_arvore.h"
 
@@ -28,14 +29,14 @@
 	<string.h>
 	<locale.h>
 
-1543281293 c:\users\jakso\documents\trabalho ed2\huffman-minimo\algoritmo_huffman_ed2\tad_arvore.h
+1543300621 c:\users\jakso\documents\trabalho ed2\huffman-minimo\algoritmo_huffman_ed2\tad_arvore.h
 	"Fila.h"
 
-1543287701 source:c:\users\jakso\documents\trabalho ed2\huffman-minimo\algoritmo_huffman_ed2\fila.c
+1543288351 source:c:\users\jakso\documents\trabalho ed2\huffman-minimo\algoritmo_huffman_ed2\fila.c
 	"Fila.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1543280966 c:\users\jakso\documents\trabalho ed2\huffman-minimo\algoritmo_huffman_ed2\fila.h
+1543288351 c:\users\jakso\documents\trabalho ed2\huffman-minimo\algoritmo_huffman_ed2\fila.h
 
